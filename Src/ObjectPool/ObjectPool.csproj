@@ -40,7 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccessMode.cs" />
+    <Compile Include="LoadingMode.cs" />
+    <Compile Include="Stores\CircularStore.cs" />
+    <Compile Include="IObjectStore.cs" />
+    <Compile Include="Pool.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Slot.cs" />
+    <Compile Include="Stores\QueueStore.cs" />
+    <Compile Include="Stores\StackStore.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
