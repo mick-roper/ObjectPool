@@ -9,7 +9,7 @@ namespace ObjectPool.Tests
         [TestMethod]
         public void Pool_is_sealed()
         {
-            var isSealed = typeof(Pool).IsSealed;
+            var isSealed = typeof(Pool<>).IsSealed;
 
             Assert.IsTrue(isSealed);
         }
@@ -17,7 +17,7 @@ namespace ObjectPool.Tests
         [TestMethod]
         public void Pool_implements_IDisposable()
         {
-            var implements = typeof(IDisposable).IsAssignableFrom(typeof(Pool));
+            var implements = typeof(IDisposable).IsAssignableFrom(typeof(Pool<>));
 
             Assert.IsTrue(implements);
         }
