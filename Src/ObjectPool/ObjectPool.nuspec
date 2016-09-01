@@ -13,4 +13,7 @@
     <copyright>Copyright 2016</copyright>
     <tags>.Net Object Pool Pooling Management Memory MemoryManagement Lifecycle</tags>
   </metadata>
+  <files>
+    <file src="ObjectPool.dll" target="lib/net45" />
+  </files>
 </package>
