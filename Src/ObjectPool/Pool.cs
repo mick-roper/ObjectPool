@@ -11,12 +11,12 @@ namespace ObjectPool
     /// <summary>
     /// An object pool instance.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type of object to store in this pool</typeparam>
     public sealed class Pool<T> : IDisposable where T : class
     {
         readonly IObjectStore<T> store_;
         readonly LoadingMode loadingMode_;
-        readonly Func<Pool<T>, T> instanceFactory_;
+        readonly Func<T> instanceFactory_;
         readonly Semaphore sync_;
 
         bool disposed_;
@@ -30,7 +30,7 @@ namespace ObjectPool
         /// <param name="loadingMode">The loading mode the pool should use</param>
         /// <param name="accessMode">The access mode the pool should use</param>
         /// <param name="instanceFactory">An delegate that builds instances of <see cref="T"/> </param>
-        public Pool(int size, LoadingMode loadingMode, AccessMode accessMode, Func<Pool<T>, T> instanceFactory)
+        public Pool(int size, LoadingMode loadingMode, AccessMode accessMode, Func<T> instanceFactory)
         {
             if (size <= 0) throw new ArgumentOutOfRangeException("size must be greater than 0!");
             if (instanceFactory == null) throw new ArgumentNullException("instanceFactory");
@@ -70,6 +70,7 @@ namespace ObjectPool
         #endregion
 
         #region private instance members
+
         /// <summary>
         /// Eagrely acquires an instance of T
         /// </summary>
@@ -97,7 +98,7 @@ namespace ObjectPool
             }
 
             Interlocked.Increment(ref count_);
-            return instanceFactory_(this);
+            return instanceFactory_();
         }
 
         /// <summary>
@@ -123,7 +124,7 @@ namespace ObjectPool
 
             if (shouldExpand)
             {
-                return instanceFactory_(this);
+                return instanceFactory_();
             }
             else
             {
@@ -132,13 +133,13 @@ namespace ObjectPool
         }
 
         /// <summary>
-        /// Pre0loads the store with items
+        /// Pre-loads the store with items
         /// </summary>
         private void PreLoad()
         {
             for (int i = 0; i < size_; i++)
             {
-                var item = instanceFactory_(this);
+                var item = instanceFactory_();
                 store_.Add(item);
             }
 
@@ -147,6 +148,11 @@ namespace ObjectPool
         #endregion
 
         #region public instance members
+        /// <summary>
+        /// Gets a count of items in the pool
+        /// </summary>
+        public int Count { get { return store_.Count; } }
+
         /// <summary>
         /// Checks if the pool has been disposed
         /// </summary>

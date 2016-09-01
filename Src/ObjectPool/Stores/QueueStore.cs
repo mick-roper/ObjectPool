@@ -8,10 +8,7 @@ namespace ObjectPool.Stores
 {
     sealed class QueueStore<T> : Queue<T>, IObjectStore<T> where T : class
     {
-        public QueueStore(int capacity) : base(capacity)
-        {
-
-        }
+        public QueueStore(int capacity) : base(capacity) { }
 
         public T Fetch()
         {

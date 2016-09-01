@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ObjectPool
+namespace ObjectPool.Stores
 {
     /// <summary>
     /// An interface that describes an object store

@@ -43,7 +43,7 @@
     <Compile Include="AccessMode.cs" />
     <Compile Include="LoadingMode.cs" />
     <Compile Include="Stores\CircularStore.cs" />
-    <Compile Include="IObjectStore.cs" />
+    <Compile Include="Stores\IObjectStore.cs" />
     <Compile Include="Pool.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Slot.cs" />

@@ -8,11 +8,7 @@ namespace ObjectPool.Stores
 {
     sealed class StackStore<T> : Stack<T>, IObjectStore<T> where T : class
     {
-        public StackStore(int capacity)
-            : base(capacity)
-        {
-
-        }
+        public StackStore(int capacity) : base(capacity) { }
 
         public T Fetch()
         {
