@@ -51,7 +51,7 @@
     <Compile Include="Stores\StackStore.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ObjectPool.dll.nuspec">
+    <None Include="ObjectPool.nuspec">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
