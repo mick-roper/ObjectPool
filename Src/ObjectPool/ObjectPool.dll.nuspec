@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>ObjectPool</id>
+    <version>1.0.0</version>
+    <authors>Mick Roper</authors>
+    <owners>Mick Roper</owners>
+    <licenseUrl>https://github.com/mick-roper/ObjectPool/blob/RC-01/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/mick-roper/ObjectPool</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A .Net object pool - makes managing objects that are expensive to create and destroy that much nicer!</description>
+    <releaseNotes>Initial release. Please post any bugs to https://github.com/mick-roper/ObjectPool/issues.</releaseNotes>
+    <copyright>Copyright 2016</copyright>
+    <tags>.Net Object Pool Pooling Management Memory MemoryManagement Lifecycle</tags>
+  </metadata>
+</package>
