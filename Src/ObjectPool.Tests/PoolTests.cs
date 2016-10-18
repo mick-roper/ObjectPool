@@ -205,19 +205,6 @@ namespace ObjectPool.Tests
             }
         }
 
-        [TestMethod]
-        public void Pool_Dispose_does_not_throw_error_if_called_more_than_once()
-        {
-            var pool = new Pool<TestObject>(1, LoadingMode.Eager, AccessMode.Circular, () => { return new TestObject(); });
-
-            // we shouldnt get an 'object disposed' exception
-            pool.Dispose();
-
-            Assert.IsTrue(pool.IsDisposed);
-
-            pool.Dispose();
-        }
-
         sealed class TestObject : IDisposable
         {
             public int Activations { get; set; }

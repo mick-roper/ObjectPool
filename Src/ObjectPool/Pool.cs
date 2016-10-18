@@ -19,7 +19,6 @@ namespace ObjectPool
         readonly Func<T> instanceFactory_;
         readonly Semaphore sync_;
 
-        bool disposed_;
         int size_;
         int count_;
 
@@ -35,7 +34,6 @@ namespace ObjectPool
             if (size <= 0) throw new ArgumentOutOfRangeException("size must be greater than 0!");
             if (instanceFactory == null) throw new ArgumentNullException("instanceFactory");
 
-            disposed_ = false;
             size_ = size;
             loadingMode_ = loadingMode;
             instanceFactory_ = instanceFactory;
@@ -154,11 +152,6 @@ namespace ObjectPool
         public int Count { get { return store_.Count; } }
 
         /// <summary>
-        /// Checks if the pool has been disposed
-        /// </summary>
-        public bool IsDisposed { get { return disposed_; } }
-
-        /// <summary>
         /// Acquires an instance from the store
         /// </summary>
         /// <returns></returns>
@@ -196,13 +189,6 @@ namespace ObjectPool
         /// </summary>
         public void Dispose()
         {
-            if (disposed_)
-            {
-                return;
-            }
-
-            disposed_ = true;
-
             if (typeof(IDisposable).IsAssignableFrom(typeof(T)))
             {
                 lock(store_)
