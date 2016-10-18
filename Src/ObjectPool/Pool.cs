@@ -120,14 +120,18 @@ namespace ObjectPool
                 }
             }
 
+            T result;
+
             if (shouldExpand)
             {
-                return instanceFactory_();
+                result = instanceFactory_();
             }
             else
             {
-                return AcquireEagre();
+                result = AcquireEagre();
             }
+
+            return result;
         }
 
         /// <summary>
