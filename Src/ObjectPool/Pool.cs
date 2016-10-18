@@ -61,6 +61,7 @@ namespace ObjectPool
                     return new QueueStore<T>(capacity);
                 case AccessMode.Lifo:
                     return new StackStore<T>(capacity);
+                case AccessMode.Circular:
                 default:
                     return new CircularStore<T>(capacity);
             }
